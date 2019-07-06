@@ -12,8 +12,8 @@ script:
 # deploy this container to AWS elasticbeanstalk (great way to launch single container apps)
 deploy:
   provider: elasticbeanstalk
-  region: "us-west-2"
-  app: "Sample Application"
+  region: "us-east-2"
+  app: "docker-react"
   env: "DockerReact-env"
   bucket_name: "elasticbeanstalk--us-east-2-550996401687"
   bucket_path: "docker-react"
