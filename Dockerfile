@@ -1,6 +1,6 @@
 # this docker file uses two phases: Build phase and production phase
 FROM node:alpine as builder
-WORKDIR "/app"
+WORKDIR '/app'
 COPY package.json .
 RUN npm install
 COPY . .
