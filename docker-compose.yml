@@ -1,0 +1,25 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    # we map the current working directory (".") to the /app-folder inside the container.
+    # This is that we can edit the index.js from outside the container and can easily 
+    # refresh the app without always building the container when we make a change.
+    # The first line is to tell, that node_modules (coming from npm install) should not
+    # been overwritten
+    volumes:
+      - /app/node_modules
+      - .:/app
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    #overwrites the default startup command
+    command: ["npm", "run", "test"]
